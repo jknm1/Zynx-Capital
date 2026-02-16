@@ -10,8 +10,9 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #F5F7FA, #E5E7EB);
+      background: linear-gradient(135deg, #FFFFFF, #FFE4F0);
       color: #111827;
+      overflow-x: hidden;
     }
     a { text-decoration: none; }
 
@@ -24,17 +25,31 @@
       height: 70vh;
       text-align: center;
       padding: 0 20px;
+      position: relative;
     }
+
+    header img.logo {
+      width: 150px;
+      margin-bottom: 20px;
+    }
+
     header h1 {
       font-family: 'Montserrat', sans-serif;
       font-size: 3rem;
-      color: #1F2937;
+      color: #EC4899; /* pink accent */
       margin-bottom: 15px;
+      animation: fadeUp 1s ease-out;
     }
     header p {
       font-size: 1.3rem;
-      color: #4B5563;
+      color: #6B7280;
       max-width: 600px;
+      animation: fadeUp 1.5s ease-out;
+    }
+
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     /* Form Section */
@@ -47,21 +62,19 @@
       background-color: #FFFFFF;
       border-radius: 16px;
       padding: 40px;
-      max-width: 450px;
+      max-width: 500px;
       width: 100%;
-      box-shadow: 0 8px 24px rgba(31, 41, 55, 0.1);
+      box-shadow: 0 8px 24px rgba(236, 72, 153, 0.2); /* subtle pink shadow */
       position: relative;
       transition: transform 0.3s;
     }
-    .form-container:hover {
-      transform: translateY(-4px);
-    }
+    .form-container:hover { transform: translateY(-4px); }
 
     .form-container label {
       display: block;
       margin-bottom: 5px;
       font-weight: 600;
-      color: #1F2937;
+      color: #111827;
     }
     .form-container input[type="text"],
     .form-container input[type="email"],
@@ -70,7 +83,7 @@
       padding: 12px;
       margin-bottom: 20px;
       border-radius: 12px;
-      border: 1px solid #D1D5DB;
+      border: 1px solid #E5E7EB;
       font-size: 14px;
       background-color: #F9FAFB;
       transition: border 0.3s, background-color 0.3s;
@@ -78,14 +91,14 @@
     .form-container input[type="text"]:focus,
     .form-container input[type="email"]:focus,
     .form-container input[type="number"]:focus {
-      border: 2px solid #3B82F6;
+      border: 2px solid #EC4899;
       background-color: #FFFFFF;
       outline: none;
     }
     .form-container input[type="submit"] {
       width: 100%;
       padding: 14px;
-      background-color: #3B82F6;
+      background-color: #EC4899;
       color: #FFFFFF;
       border: none;
       font-size: 16px;
@@ -95,7 +108,7 @@
       transition: background-color 0.3s, transform 0.2s;
     }
     .form-container input[type="submit"]:hover {
-      background-color: #2563EB;
+      background-color: #DB2777;
       transform: translateY(-2px);
     }
     .form-footer {
@@ -132,22 +145,14 @@
     }
     footer span {
       font-weight: 600;
-      color: #1F2937;
-    }
-
-    /* Animations */
-    header h1, header p, .form-container {
-      animation: fadeUp 1s ease-out;
-    }
-    @keyframes fadeUp {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+      color: #111827;
     }
 
     /* Responsive */
     @media(max-width: 500px) {
       header h1 { font-size: 2.2rem; }
       header p { font-size: 1rem; }
+      header img.logo { width: 120px; }
     }
 
   </style>
@@ -155,6 +160,8 @@
 <body>
 
   <header>
+    <!-- Replace 'logo.png' with your Zynx Capital logo file -->
+    <img src="logo.png" alt="Zynx Capital Logo" class="logo">
     <h1>Zynx Capital</h1>
     <p>Empowering Elite Traders — Join the early access waiting list for funded trading opportunities</p>
   </header>
