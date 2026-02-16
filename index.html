@@ -213,10 +213,7 @@ background:linear-gradient(90deg,#ff2dbb,#ff6ec7);
 @media(max-width:420px){
 .container{width:90%}
 }
-  body.dark {
-  background: #111;
-  color: white;
-}
+  
 
 </style>
 </head>
@@ -227,7 +224,7 @@ background:linear-gradient(90deg,#ff2dbb,#ff6ec7);
 <div class="shape s2"></div>
 <div class="shape s3"></div>
 
-<button id="theme-toggle" class="theme-btn">🌙</button>
+
 
 <main>
 
@@ -252,9 +249,9 @@ background:linear-gradient(90deg,#ff2dbb,#ff6ec7);
 
 <div class="board">
 <h3>Top Traders Preview</h3>
-<div class="trader"><span>AlphaSniper</span><span>+$42,800</span></div>
-<div class="trader"><span>FXGhost</span><span>+$38,100</span></div>
-<div class="trader"><span>GoldHunter</span><span>+$35,600</span></div>
+<div class="trader"><span>ibrahimabdi</span><span>+$42,800</span></div>
+<div class="trader"><span>james olomodi</span><span>+$7,100</span></div>
+<div class="trader"><span>Vihaan</span><span>+$3,600</span></div>
 </div>
 
 <div class="investor">
@@ -306,28 +303,7 @@ setTimeout(()=>popup.classList.remove("show"),2500);
 
 form.reset();
 });
-<script>
-const themeToggle = document.getElementById("theme-toggle");
 
-// Load saved mode
-if (localStorage.getItem("darkMode") === "enabled") {
-  document.body.classList.add("dark");
-  themeToggle.textContent = "☀️";
-} else {
-  themeToggle.textContent = "🌙";
-}
-
-// Toggle mode
-themeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-
-  const darkEnabled = document.body.classList.contains("dark");
-
-  themeToggle.textContent = darkEnabled ? "☀️" : "🌙";
-
-  localStorage.setItem("darkMode", darkEnabled ? "enabled" : "disabled");
-});
-</script>
 </script>
 
 </body>
