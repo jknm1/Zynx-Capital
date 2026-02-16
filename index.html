@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zynx Capital Waiting List</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #0B1F3A;
+      color: #E5E5E5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #0B1F3A;
+      border: 2px solid #00D1B2;
+      padding: 40px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 30px rgba(0,209,178,0.5);
+    }
+    h1 {
+      color: #00D1B2;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #E5E5E5;
+      background-color: #1A2A45;
+      color: #E5E5E5;
+      font-size: 14px;
+    }
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background-color: #00D1B2;
+      color: #0B1F3A;
+      border: none;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    input[type="submit"]:hover {
+      background-color: #00b89b;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 12px;
+      color: #AAAAAA;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Zynx Capital Waiting List</h1>
+    <form action="https://formspree.io/f/mayvlvqe" method="POST">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="John Doe" required>
+
+      <label for="years">Years in Trading</label>
+      <input type="number" id="years" name="years" placeholder="3" required min="0">
+
+      <label for="pair">Favorite Trading Pair</label>
+      <input type="text" id="pair" name="pair" placeholder="XAU/USD" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+      <input type="submit" value="Join Waiting List">
+    </form>
+    <div class="footer">
+      By submitting, you agree to receive emails from Zynx Capital.
+    </div>
+  </div>
+</body>
+</html>
