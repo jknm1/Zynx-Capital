@@ -1,226 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zynx Capital — Empowering Elite Traders</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet">
-  <style>
-    /* Global Styles */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #FFFFFF, #FFE4F0);
-      color: #111827;
-      overflow-x: hidden;
-    }
-    a { text-decoration: none; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zynx Capital</title>
 
-    /* Header / Hero */
-    header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 70vh;
-      text-align: center;
-      padding: 0 20px;
-      position: relative;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 
-    header img.logo {
-      width: 150px;
-      margin-bottom: 20px;
-    }
+<style>
 
-    header h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 3rem;
-      color: #EC4899; /* pink accent */
-      margin-bottom: 15px;
-      animation: fadeUp 1s ease-out;
-    }
-    header p {
-      font-size: 1.3rem;
-      color: #6B7280;
-      max-width: 600px;
-      animation: fadeUp 1.5s ease-out;
-    }
+/* BASE */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter;}
+body{
+background:linear-gradient(-45deg,#ffffff,#ffd6f4,#ffc2ec,#ffffff);
+background-size:400% 400%;
+animation:bg 15s ease infinite;
+color:#111;
+transition:.4s;
+overflow-x:hidden;
+}
 
-    @keyframes fadeUp {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
+body.dark{
+background:#0d0d0f;
+color:#eee;
+}
 
-    /* Form Section */
-    section {
-      display: flex;
-      justify-content: center;
-      padding: 50px 20px;
-    }
-    .form-container {
-      background-color: #FFFFFF;
-      border-radius: 16px;
-      padding: 40px;
-      max-width: 500px;
-      width: 100%;
-      box-shadow: 0 8px 24px rgba(236, 72, 153, 0.2); /* subtle pink shadow */
-      position: relative;
-      transition: transform 0.3s;
-    }
-    .form-container:hover { transform: translateY(-4px); }
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
 
-    .form-container label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: 600;
-      color: #111827;
-    }
-    .form-container input[type="text"],
-    .form-container input[type="email"],
-    .form-container input[type="number"] {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      border: 1px solid #E5E7EB;
-      font-size: 14px;
-      background-color: #F9FAFB;
-      transition: border 0.3s, background-color 0.3s;
-    }
-    .form-container input[type="text"]:focus,
-    .form-container input[type="email"]:focus,
-    .form-container input[type="number"]:focus {
-      border: 2px solid #EC4899;
-      background-color: #FFFFFF;
-      outline: none;
-    }
-    .form-container input[type="submit"] {
-      width: 100%;
-      padding: 14px;
-      background-color: #EC4899;
-      color: #FFFFFF;
-      border: none;
-      font-size: 16px;
-      font-weight: 700;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
-    }
-    .form-container input[type="submit"]:hover {
-      background-color: #DB2777;
-      transform: translateY(-2px);
-    }
-    .form-footer {
-      text-align: center;
-      font-size: 12px;
-      color: #6B7280;
-      margin-top: 10px;
-    }
+/* FLOATING SHAPES */
+.shape{
+position:fixed;
+border-radius:50%;
+filter:blur(60px);
+opacity:.5;
+z-index:-1;
+animation:float 12s infinite ease-in-out;
+}
+.s1{width:300px;height:300px;background:#ff2dbb;top:10%;left:10%;}
+.s2{width:250px;height:250px;background:#ff6ec7;bottom:10%;right:10%;animation-delay:2s;}
+.s3{width:200px;height:200px;background:#ffa0dd;top:60%;left:40%;animation-delay:4s;}
 
-    /* Success Popup */
-    .success-popup {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #10B981;
-      color: #FFFFFF;
-      padding: 20px 25px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 15px;
-      text-align: center;
-      display: none;
-      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.5);
-      z-index: 100;
-    }
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-40px);}
+}
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 12px;
-      color: #6B7280;
-    }
-    footer span {
-      font-weight: 600;
-      color: #111827;
-    }
+/* CARD */
+.container{
+max-width:420px;
+margin:60px auto;
+padding:40px;
+border-radius:25px;
+backdrop-filter:blur(20px);
+background:rgba(255,255,255,0.6);
+box-shadow:0 25px 70px rgba(0,0,0,0.15);
+text-align:center;
+transition:.4s;
+}
 
-    /* Responsive */
-    @media(max-width: 500px) {
-      header h1 { font-size: 2.2rem; }
-      header p { font-size: 1rem; }
-      header img.logo { width: 120px; }
-    }
+body.dark .container{
+background:rgba(20,20,25,0.7);
+}
 
-  </style>
+/* LOGO */
+.logo{width:140px;margin-bottom:15px}
+
+/* TITLE */
+h1{
+font-size:30px;
+background:linear-gradient(90deg,#ff2dbb,#ff6ec7);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* TEXT */
+.subtitle{margin:10px 0 25px;color:#666}
+body.dark .subtitle{color:#aaa}
+
+/* INPUT */
+input{
+width:100%;
+padding:14px;
+margin:10px 0;
+border-radius:12px;
+border:1px solid #eee;
+font-size:14px;
+}
+input:focus{border-color:#ff6ec7;outline:none}
+
+/* BUTTON */
+button{
+width:100%;
+padding:15px;
+margin-top:10px;
+border:none;
+border-radius:14px;
+background:linear-gradient(90deg,#ff2dbb,#ff6ec7);
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:.25s;
+}
+button:hover{transform:translateY(-2px);}
+
+/* COUNTER */
+.counter{
+margin-top:18px;
+font-size:14px;
+color:#777;
+}
+
+/* TOGGLE */
+.toggle{
+position:fixed;
+top:20px;
+right:20px;
+background:#111;
+color:#fff;
+padding:10px 15px;
+border-radius:30px;
+cursor:pointer;
+font-size:13px;
+}
+
+/* LEADERBOARD */
+.board{
+margin-top:40px;
+text-align:left;
+}
+.board h3{margin-bottom:10px}
+.trader{
+display:flex;
+justify-content:space-between;
+padding:10px;
+border-radius:10px;
+background:rgba(255,255,255,.5);
+margin-bottom:8px;
+}
+
+/* INVESTOR */
+.investor{
+margin-top:35px;
+padding:20px;
+border-radius:18px;
+background:linear-gradient(90deg,#ff2dbb22,#ff6ec722);
+font-size:14px;
+}
+
+/* POPUP */
+.popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(.8);
+background:#10b981;
+color:white;
+padding:20px 30px;
+border-radius:16px;
+opacity:0;
+transition:.3s;
+}
+.popup.show{opacity:1;transform:translate(-50%,-50%) scale(1);}
+
+</style>
 </head>
+
 <body>
 
-  <header>
-    <!-- Replace 'logo.png' with your Zynx Capital logo file -->
-    <img src="logo.png" alt="Zynx Capital Logo" class="logo">
-    <h1>Zynx Capital</h1>
-    <p>Empowering Elite Traders — Join the early access waiting list for funded trading opportunities</p>
-  </header>
+<div class="shape s1"></div>
+<div class="shape s2"></div>
+<div class="shape s3"></div>
 
-  <section>
-    <div class="form-container">
-      <form id="waitingListForm" action="https://formspree.io/f/meelkepr" method="POST">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" placeholder="John Doe" required>
+<div class="toggle" onclick="toggleMode()">Toggle Mode</div>
 
-        <label for="years">Years in Trading</label>
-        <input type="number" id="years" name="years" placeholder="3" required min="0">
+<div class="container">
 
-        <label for="pair">Favorite Trading Pair</label>
-        <input type="text" id="pair" name="pair" placeholder="XAU/USD" required>
+<img class="logo" src="https://raw.githubusercontent.com/jknm1/Zynx-Capital/refs/heads/main/FF7EFFD9-BCAB-432A-ADDC-C75A0C084E8D.png">
 
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+<h1>Zynx Capital</h1>
+<div class="subtitle">Elite Trader Access Program</div>
 
-        <input type="submit" value="Join Waiting List">
-      </form>
-      <div class="form-footer">
-        By submitting, you agree to receive emails from Zynx Capital.
-      </div>
-      <div class="success-popup" id="successPopup">
-        ✅ Thank you! You’ve been added to the Zynx Capital waiting list.
-      </div>
-    </div>
-  </section>
+<form id="form">
+<input name="name" placeholder="Full Name" required>
+<input name="years" placeholder="Years Trading" required>
+<input name="pair" placeholder="Favorite Pair" required>
+<input type="email" name="email" placeholder="Email" required>
+<button id="btn">Join Waiting List</button>
+</form>
 
-  <footer>
-    &copy; 2026 <span>Zynx Capital</span> — Powered by <span>ZynxCorp</span>
-  </footer>
+<div class="counter">
+🔥 <span id="count">184</span> traders already applied
+</div>
 
-  <script>
-    const form = document.getElementById('waitingListForm');
-    const popup = document.getElementById('successPopup');
+<div class="board">
+<h3>Top Traders Preview</h3>
+<div class="trader"><span>AlphaSniper</span><span>+$42,800</span></div>
+<div class="trader"><span>FXGhost</span><span>+$38,100</span></div>
+<div class="trader"><span>GoldHunter</span><span>+$35,600</span></div>
+</div>
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const formData = new FormData(form);
+<div class="investor">
+<strong>Investor Access</strong><br>
+Zynx Capital allocates capital to proven traders globally. Early partners receive priority allocation and profit share rights.
+</div>
 
-      fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        if (response.ok) {
-          popup.style.display = 'block';
-          form.reset();
-          setTimeout(() => { popup.style.display = 'none'; }, 4000);
-        } else {
-          alert("Oops! There was a problem submitting your form.");
-        }
-      }).catch(error => {
-        alert("Oops! There was a problem submitting your form.");
-      });
-    });
-  </script>
+</div>
+
+<div class="popup" id="popup">✅ Application Submitted</div>
+
+<script>
+
+/* DARK MODE */
+function toggleMode(){
+document.body.classList.toggle("dark");
+}
+
+/* COUNTER */
+let c = localStorage.getItem("zynxCount") || 184;
+document.getElementById("count").textContent=c;
+
+/* FORM */
+const form=document.getElementById("form");
+const popup=document.getElementById("popup");
+
+form.addEventListener("submit",async e=>{
+e.preventDefault();
+
+const data=new FormData(form);
+
+await fetch("https://formspree.io/f/meelkepr",{
+method:"POST",
+body:data,
+headers:{'Accept':'application/json'}
+});
+
+c++;
+localStorage.setItem("zynxCount",c);
+document.getElementById("count").textContent=c;
+
+popup.classList.add("show");
+setTimeout(()=>popup.classList.remove("show"),2500);
+
+form.reset();
+});
+
+</script>
 
 </body>
 </html>
