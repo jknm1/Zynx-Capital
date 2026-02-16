@@ -9,9 +9,13 @@
 
 <style>
 
-/* BASE */
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter;}
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
+
 body{
+min-height:100vh;
+display:flex;
+flex-direction:column;
 background:linear-gradient(-45deg,#ffffff,#ffd6f4,#ffc2ec,#ffffff);
 background-size:400% 400%;
 animation:bg 15s ease infinite;
@@ -35,8 +39,8 @@ color:#eee;
 .shape{
 position:fixed;
 border-radius:50%;
-filter:blur(60px);
-opacity:.5;
+filter:blur(70px);
+opacity:.45;
 z-index:-1;
 animation:float 12s infinite ease-in-out;
 }
@@ -49,21 +53,42 @@ animation:float 12s infinite ease-in-out;
 50%{transform:translateY(-40px);}
 }
 
+/* TOGGLE */
+.toggle{
+position:fixed;
+top:20px;
+right:20px;
+background:#111;
+color:#fff;
+padding:10px 16px;
+border-radius:30px;
+cursor:pointer;
+font-size:13px;
+z-index:99;
+}
+
+/* MAIN */
+main{
+flex:1;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
 /* CARD */
 .container{
 max-width:420px;
-margin:60px auto;
-padding:40px;
+padding:45px 35px;
 border-radius:25px;
 backdrop-filter:blur(20px);
-background:rgba(255,255,255,0.6);
+background:rgba(255,255,255,0.65);
 box-shadow:0 25px 70px rgba(0,0,0,0.15);
 text-align:center;
 transition:.4s;
 }
 
 body.dark .container{
-background:rgba(20,20,25,0.7);
+background:rgba(20,20,25,0.75);
 }
 
 /* LOGO */
@@ -77,8 +102,11 @@ background:linear-gradient(90deg,#ff2dbb,#ff6ec7);
 -webkit-text-fill-color:transparent;
 }
 
-/* TEXT */
-.subtitle{margin:10px 0 25px;color:#666}
+/* SUBTEXT */
+.subtitle{
+margin:12px 0 25px;
+color:#666;
+}
 body.dark .subtitle{color:#aaa}
 
 /* INPUT */
@@ -90,7 +118,11 @@ border-radius:12px;
 border:1px solid #eee;
 font-size:14px;
 }
-input:focus{border-color:#ff6ec7;outline:none}
+input:focus{
+border-color:#ff6ec7;
+outline:none;
+box-shadow:0 0 0 3px rgba(255,110,199,0.15);
+}
 
 /* BUTTON */
 button{
@@ -105,7 +137,10 @@ font-weight:600;
 cursor:pointer;
 transition:.25s;
 }
-button:hover{transform:translateY(-2px);}
+button:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 25px rgba(255,0,170,0.3);
+}
 
 /* COUNTER */
 .counter{
@@ -114,25 +149,13 @@ font-size:14px;
 color:#777;
 }
 
-/* TOGGLE */
-.toggle{
-position:fixed;
-top:20px;
-right:20px;
-background:#111;
-color:#fff;
-padding:10px 15px;
-border-radius:30px;
-cursor:pointer;
-font-size:13px;
-}
-
 /* LEADERBOARD */
 .board{
 margin-top:40px;
 text-align:left;
 }
 .board h3{margin-bottom:10px}
+
 .trader{
 display:flex;
 justify-content:space-between;
@@ -142,7 +165,7 @@ background:rgba(255,255,255,.5);
 margin-bottom:8px;
 }
 
-/* INVESTOR */
+/* INVESTOR BOX */
 .investor{
 margin-top:35px;
 padding:20px;
@@ -163,8 +186,33 @@ padding:20px 30px;
 border-radius:16px;
 opacity:0;
 transition:.3s;
+z-index:999;
 }
-.popup.show{opacity:1;transform:translate(-50%,-50%) scale(1);}
+.popup.show{
+opacity:1;
+transform:translate(-50%,-50%) scale(1);
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:25px 10px;
+font-size:13px;
+color:#888;
+backdrop-filter:blur(8px);
+}
+
+footer span{
+font-weight:600;
+background:linear-gradient(90deg,#ff2dbb,#ff6ec7);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* MOBILE */
+@media(max-width:420px){
+.container{width:90%}
+}
 
 </style>
 </head>
@@ -177,6 +225,8 @@ transition:.3s;
 
 <div class="toggle" onclick="toggleMode()">Toggle Mode</div>
 
+<main>
+
 <div class="container">
 
 <img class="logo" src="https://raw.githubusercontent.com/jknm1/Zynx-Capital/refs/heads/main/FF7EFFD9-BCAB-432A-ADDC-C75A0C084E8D.png">
@@ -188,8 +238,8 @@ transition:.3s;
 <input name="name" placeholder="Full Name" required>
 <input name="years" placeholder="Years Trading" required>
 <input name="pair" placeholder="Favorite Pair" required>
-<input type="email" name="email" placeholder="Email" required>
-<button id="btn">Join Waiting List</button>
+<input type="email" name="email" placeholder="Email Address" required>
+<button>Join Waiting List</button>
 </form>
 
 <div class="counter">
@@ -205,10 +255,15 @@ transition:.3s;
 
 <div class="investor">
 <strong>Investor Access</strong><br>
-Zynx Capital allocates capital to proven traders globally. Early partners receive priority allocation and profit share rights.
+Zynx Capital allocates capital to elite traders globally. Early partners receive priority allocation and exclusive profit share access.
 </div>
 
 </div>
+</main>
+
+<footer>
+&copy; 2026 <span>Zynx Capital</span> — Powered by <span>ZynxCorp</span>
+</footer>
 
 <div class="popup" id="popup">✅ Application Submitted</div>
 
@@ -221,13 +276,13 @@ document.body.classList.toggle("dark");
 
 /* COUNTER */
 let c = localStorage.getItem("zynxCount") || 184;
-document.getElementById("count").textContent=c;
+document.getElementById("count").textContent = c;
 
 /* FORM */
 const form=document.getElementById("form");
 const popup=document.getElementById("popup");
 
-form.addEventListener("submit",async e=>{
+form.addEventListener("submit", async e=>{
 e.preventDefault();
 
 const data=new FormData(form);
@@ -249,12 +304,6 @@ form.reset();
 });
 
 </script>
- </section>
 
-  <footer>
-    &copy; 2026 <span>Zynx Capital</span> — Powered by <span>ZynxCorp</span>
-  </footer>
-
- 
 </body>
 </html>
