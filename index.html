@@ -13,267 +13,245 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
 
 body{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-background:linear-gradient(-45deg,#ffffff,#ffd6f4,#ffc2ec,#ffffff);
-background-size:400% 400%;
-animation:bg 15s ease infinite;
-color:#111;
-transition:.4s;
+background:#0c0c0f;
+color:#fff;
 overflow-x:hidden;
 }
 
-body.dark{
-background:#0d0d0f;
-color:#eee;
-}
-
-@keyframes bg{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-/* FLOATING SHAPES */
-.shape{
-position:fixed;
-border-radius:50%;
-filter:blur(70px);
-opacity:.45;
-z-index:-1;
-animation:float 12s infinite ease-in-out;
-}
-.s1{width:300px;height:300px;background:#ff2dbb;top:10%;left:10%;}
-.s2{width:250px;height:250px;background:#ff6ec7;bottom:10%;right:10%;animation-delay:2s;}
-.s3{width:200px;height:200px;background:#ffa0dd;top:60%;left:40%;animation-delay:4s;}
-
-@keyframes float{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-40px);}
-}
-
-/* TOGGLE */
-.toggle{
-position:fixed;
-top:20px;
-right:20px;
-background:#111;
-color:#fff;
-padding:10px 16px;
-border-radius:30px;
-cursor:pointer;
-font-size:13px;
-z-index:99;
-}
-
-/* MAIN */
-main{
-flex:1;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-/* CARD */
-.container{
-max-width:420px;
-padding:45px 35px;
-border-radius:25px;
-backdrop-filter:blur(20px);
-background:rgba(255,255,255,0.65);
-box-shadow:0 25px 70px rgba(0,0,0,0.15);
+/* HERO */
+.hero{
 text-align:center;
-transition:.4s;
+padding:90px 20px 60px;
+background:radial-gradient(circle at top,#ff2dbb33,transparent 60%);
 }
 
-body.dark .container{
-background:rgba(20,20,25,0.75);
-}
-
-/* LOGO */
-.logo{width:140px;margin-bottom:15px}
-
-/* TITLE */
-h1{
-font-size:30px;
+.hero h1{
+font-size:48px;
 background:linear-gradient(90deg,#ff2dbb,#ff6ec7);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
-/* SUBTEXT */
-.subtitle{
-margin:12px 0 25px;
-color:#666;
+.tagline{
+margin-top:15px;
+font-size:18px;
+opacity:.8;
 }
-body.dark .subtitle{color:#aaa}
+
+.badge{
+margin-top:18px;
+display:inline-block;
+padding:8px 18px;
+border-radius:30px;
+background:#ff2dbb22;
+color:#ff7ad9;
+font-size:13px;
+}
+
+/* TRUST STRIP */
+.trust{
+display:flex;
+justify-content:center;
+gap:25px;
+margin-top:30px;
+flex-wrap:wrap;
+font-size:14px;
+opacity:.8;
+}
+
+/* CARD */
+.container{
+max-width:420px;
+margin:60px auto;
+padding:40px 30px;
+border-radius:24px;
+background:#111118;
+box-shadow:0 0 40px rgba(255,0,180,0.08);
+text-align:center;
+}
 
 /* INPUT */
 input{
 width:100%;
-padding:14px;
+padding:15px;
 margin:10px 0;
 border-radius:12px;
-border:1px solid #eee;
-font-size:14px;
+border:1px solid #222;
+background:#0c0c12;
+color:white;
 }
+
 input:focus{
-border-color:#ff6ec7;
+border-color:#ff2dbb;
 outline:none;
-box-shadow:0 0 0 3px rgba(255,110,199,0.15);
 }
 
 /* BUTTON */
 button{
 width:100%;
-padding:15px;
-margin-top:10px;
+padding:16px;
+margin-top:12px;
 border:none;
 border-radius:14px;
 background:linear-gradient(90deg,#ff2dbb,#ff6ec7);
 color:white;
 font-weight:600;
 cursor:pointer;
-transition:.25s;
+transition:.3s;
 }
+
 button:hover{
 transform:translateY(-2px);
-box-shadow:0 10px 25px rgba(255,0,170,0.3);
+box-shadow:0 10px 25px rgba(255,0,170,.3);
+}
+
+/* INFO */
+.info{
+margin:20px 0 10px;
+font-size:14px;
+line-height:1.7;
+opacity:.75;
 }
 
 /* COUNTER */
 .counter{
 margin-top:18px;
 font-size:14px;
-color:#777;
+opacity:.7;
 }
 
-/* LEADERBOARD */
-.board{
+/* HOW IT WORKS */
+.section{
+max-width:1000px;
+margin:100px auto;
+padding:0 20px;
+text-align:center;
+}
+
+.section h2{
+font-size:32px;
+margin-bottom:20px;
+}
+
+.steps{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
 margin-top:40px;
-text-align:left;
 }
-.board h3{margin-bottom:10px}
 
-.trader{
-display:flex;
-justify-content:space-between;
-padding:10px;
-border-radius:10px;
-background:rgba(255,255,255,.5);
-margin-bottom:8px;
+.step{
+background:#12121a;
+padding:25px;
+border-radius:18px;
+transition:.3s;
+}
+
+.step:hover{
+transform:translateY(-6px);
+box-shadow:0 15px 30px rgba(0,0,0,.4);
 }
 
 /* INVESTOR BOX */
 .investor{
-margin-top:35px;
-padding:20px;
-border-radius:18px;
+margin-top:80px;
 background:linear-gradient(90deg,#ff2dbb22,#ff6ec722);
-font-size:14px;
-}
-
-/* POPUP */
-.popup{
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%) scale(.8);
-background:#10b981;
-color:white;
-padding:20px 30px;
-border-radius:16px;
-opacity:0;
-transition:.3s;
-z-index:999;
-}
-.popup.show{
-opacity:1;
-transform:translate(-50%,-50%) scale(1);
+padding:30px;
+border-radius:20px;
 }
 
 /* FOOTER */
 footer{
 text-align:center;
-padding:25px 10px;
+padding:40px 20px;
 font-size:13px;
-color:#888;
-backdrop-filter:blur(8px);
+opacity:.5;
 }
 
 footer span{
+color:#ff6ec7;
 font-weight:600;
-background:linear-gradient(90deg,#ff2dbb,#ff6ec7);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
 }
-
-/* MOBILE */
-@media(max-width:420px){
-.container{width:90%}
-}
-  
 
 </style>
 </head>
-
 <body>
 
-<div class="shape s1"></div>
-<div class="shape s2"></div>
-<div class="shape s3"></div>
+<!-- HERO -->
+<section class="hero">
+<h1>Zynx Capital</h1>
+<div class="tagline">Institutional Trader Funding Platform</div>
+<div class="badge">Proprietary Capital Allocation Program</div>
 
+<div class="trust">
+<span>✔ Global Traders</span>
+<span>✔ Performance Based</span>
+<span>✔ No Upfront Fees</span>
+<span>✔ Strict Risk Control</span>
+</div>
+</section>
 
-
-<main>
-
+<!-- FORM CARD -->
 <div class="container">
 
-<img class="logo" src="https://raw.githubusercontent.com/jknm1/Zynx-Capital/refs/heads/main/FF7EFFD9-BCAB-432A-ADDC-C75A0C084E8D.png">
-
-<h1>Zynx Capital</h1>
-<div class="subtitle">Elite Trader Access Program</div>
+<p class="info">
+Zynx Capital is built for skilled traders who have the talent but not the capital. Selected traders gain access to live funded accounts and trade real capital while we handle the funding. You focus purely on performance.
+</p>
 
 <form id="form">
 <input name="name" placeholder="Full Name" required>
 <input name="years" placeholder="Years Trading" required>
 <input name="pair" placeholder="Favorite Pair" required>
 <input type="email" name="email" placeholder="Email Address" required>
-<button>Join Waiting List</button>
+<button>Apply For Funding</button>
 </form>
 
 <div class="counter">
-<p><span class="pulse-dot"> <span id="count">184</span> traders already applied
+<span id="count">184</span> traders already applied
 </div>
 
-<div class="board">
-<h3>Top Traders Preview</h3>
-<div class="trader"><span>ibrahimabdi</span><span>+$42,800</span></div>
-<div class="trader"><span>james olomodi</span><span>+$7,100</span></div>
-<div class="trader"><span>Vihaan</span><span>+$3,600</span></div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+<h2>How It Works</h2>
+
+<div class="steps">
+
+<div class="step">
+<h3>Apply</h3>
+<p>Submit your trading experience and strategy for review.</p>
+</div>
+
+<div class="step">
+<h3>Evaluation</h3>
+<p>We assess discipline, risk control, and consistency.</p>
+</div>
+
+<div class="step">
+<h3>Get Funded</h3>
+<p>Approved traders receive live funded accounts.</p>
+</div>
+
+<div class="step">
+<h3>Scale</h3>
+<p>Consistent traders unlock larger capital allocations.</p>
+</div>
+
 </div>
 
 <div class="investor">
-<strong>Investor Access</strong><br>
-Zynx Capital allocates capital to elite traders globally. Early partners receive priority allocation and exclusive profit share access.
+<strong>Investor Access</strong><br><br>
+Zynx Capital allocates proprietary capital to elite traders worldwide. Strategic partners receive priority allocation access and exclusive participation rights.
 </div>
 
-</div>
-</main>
+</section>
 
 <footer>
-&copy; 2026 <span>Zynx Capital</span> — Powered by <span>ZynxCorp</span>
+© 2026 <span>Zynx Capital</span> — Powered by <span>ZynxCorp</span>
 </footer>
 
-<div class="popup" id="popup">✅ Application Submitted</div>
-
 <script>
-
-/* DARK MODE */
-function toggleMode(){
-document.body.classList.toggle("dark");
-}
 
 /* COUNTER */
 let c = localStorage.getItem("zynxCount") || 184;
@@ -281,7 +259,6 @@ document.getElementById("count").textContent = c;
 
 /* FORM */
 const form=document.getElementById("form");
-const popup=document.getElementById("popup");
 
 form.addEventListener("submit", async e=>{
 e.preventDefault();
@@ -298,9 +275,7 @@ c++;
 localStorage.setItem("zynxCount",c);
 document.getElementById("count").textContent=c;
 
-popup.classList.add("show");
-setTimeout(()=>popup.classList.remove("show"),2500);
-
+alert("Application submitted successfully");
 form.reset();
 });
 
